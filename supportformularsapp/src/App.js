@@ -17,10 +17,19 @@ function App() {
       )}
 
       <label>E-mail</label>
-      <input name="Email" ref={register({ required: true })} />
-      {errors.Email && errors.Email.type === "required" && (
-        <p>Befehle benötigen</p>
-      )}
+      <input
+        type="email"
+        name="email"
+        ref={register({
+          required: "Enter your e-mail",
+          pattern: {
+            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+            message: "Enter a valid e-mail address",
+          },
+        })}
+      />
+
+      {errors.email && <p className="error">{errors.email.message}</p>}
 
       <label>Theme Bereich</label>
       <select name="Topic" ref={register({ required: true })}>
