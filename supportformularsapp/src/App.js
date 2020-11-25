@@ -10,9 +10,10 @@ function App() {
   return (
     <form className="App" onSubmit={handleSubmit(onSubmit)}>
       <h1> Supportformulars</h1>
+
       <label>Name</label>
-      <input name="Name" ref={register({ required: true })} />
-      {errors.Name && errors.Name.type === "required" && (
+      <input name="name" ref={register({ required: true })} />
+      {errors.name && errors.name.type === "required" && (
         <p>Befehle benötigen</p>
       )}
 
@@ -28,19 +29,32 @@ function App() {
           },
         })}
       />
-
       {errors.email && <p className="error">{errors.email.message}</p>}
 
       <label>Theme Bereich</label>
-      <select name="Topic" ref={register({ required: true })}>
+      <select name="topic" ref={register({ required: true })}>
         <option value="">Auswählen</option>
         <option value="allgemeine">Allgemeine</option>
         <option value="softwarefehler">Softwarefehler</option>
         <option value="rückruf">Rückruf</option>
       </select>
-      {errors.Topic && errors.Topic.type === "required" && (
+      {errors.topic && errors.topic.type === "required" && (
         <p>Befehle benötigen</p>
       )}
+
+      {/* if 문써서 보이게끔 */}
+      <label>Version</label>
+      <input
+        name="version"
+        ref={register({
+          required: "Enter your Version",
+          pattern: {
+            value: /^[0-9]*\.[0-9]*\.[0-9]{1,2}$/,
+            message: "Nur x.x.x!!! //  x = Nummer // z.B. 1.0.0 oder 1.11.12",
+          },
+        })}
+      />
+      {errors.version && <p className="error">{errors.version.message}</p>}
 
       <label>Beschreibung</label>
       <textarea name="Description" ref={register({ required: true })} />
