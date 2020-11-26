@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 function App(props) {
   const { register, handleSubmit, watch, errors } = useForm({});
   const showVersion = watch("selectd", props.selected);
+  const showNumber = watch("selectd", props.selected);
   const onSubmit = (data) => {
     console.log(data);
   };
@@ -11,12 +12,12 @@ function App(props) {
   return (
     <form className="App" onSubmit={handleSubmit(onSubmit)}>
       <h1> Supportformulars</h1>
-      <label>Name</label>
+      <label>Name *</label>
       <input name="name" ref={register({ required: true })} />
       {errors.name && errors.name.type === "required" && (
         <p>Befehle benötigen</p>
       )}
-      <label>E-mail</label>
+      <label>E-mail *</label>
       <input
         type="email"
         name="email"
@@ -29,7 +30,7 @@ function App(props) {
         })}
       />
       {errors.email && <p className="error">{errors.email.message}</p>}
-      <label>Theme Bereich</label>
+      <label>Theme Bereich *</label>
       <select name="topic" name="selectd" ref={register({ required: true })}>
         <option value="">Auswählen</option>
         <option value="allgemeine">Allgemeine</option>
@@ -42,7 +43,7 @@ function App(props) {
 
       {showVersion === "softwarefehler" && (
         <>
-          <label>Version</label>
+          <label>Version *</label>
           <input
             name="version"
             placeholder="Version : X.X.X"
@@ -59,7 +60,21 @@ function App(props) {
         </>
       )}
 
-      <label>Beschreibung</label>
+      {showNumber === "rückruf" && (
+        <>
+          <label>Telefonnummer *</label>
+          <input
+            name="telefon"
+            placeholder="Telefonnummer"
+            ref={register({
+              required: "Enter your telefon",
+            })}
+          />
+          {errors.telefon && <p className="error">{errors.telefon.message}</p>}
+        </>
+      )}
+
+      <label>Beschreibung *</label>
       <textarea name="Description" ref={register({ required: true })} />
       {errors.Description && errors.Description.type === "required" && (
         <p>Befehle benötigen</p>
