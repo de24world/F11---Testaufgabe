@@ -42,10 +42,11 @@ function App() {
         <p>Befehle benötigen</p>
       )}
 
-      {/* if 문써서 보이게끔 */}
+      {/* if softwarefehler 문써서 보이게끔 */}
       <label>Version</label>
       <input
         name="version"
+        placeholder="Version : X.X.X"
         ref={register({
           required: "Enter your Version",
           pattern: {
@@ -55,6 +56,17 @@ function App() {
         })}
       />
       {errors.version && <p className="error">{errors.version.message}</p>}
+
+      {/* if rückruf 문써서 보이게끔 */}
+      <label>Telefonnummer</label>
+      <input
+        name="telefon"
+        placeholder="Telefonnummer"
+        ref={register({
+          required: "Enter your telefon",
+        })}
+      />
+      {errors.telefon && <p className="error">{errors.telefon.message}</p>}
 
       <label>Beschreibung</label>
       <textarea name="Description" ref={register({ required: true })} />
