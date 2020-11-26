@@ -1,7 +1,10 @@
 import "./Form.css";
 import { useForm } from "react-hook-form";
+import { withTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next";
 
-function Form(props) {
+const Form = (props) => {
+  const { t } = useTranslation();
   const { register, handleSubmit, watch, errors } = useForm({});
   const showVersion = watch("selectd", props.selected);
   const showNumber = watch("selectd", props.selected);
@@ -11,13 +14,11 @@ function Form(props) {
 
   return (
     <form className="Form" onSubmit={handleSubmit(onSubmit)}>
-      <h1> Supportformulars</h1>
+      <h1> {t("SupportForm")}</h1>
       <label>Name *</label>
       <input name="name" ref={register({ required: true })} />
-      {errors.name && errors.name.type === "required" && (
-        <p>Befehle benötigen</p>
-      )}
-      <label>E-mail *</label>
+      {errors.name && errors.name.type === "required" && <p>{t("Required")}</p>}
+      <label>{t("E-mail address")} *</label>
       <input
         type="email"
         name="email"
@@ -25,23 +26,25 @@ function Form(props) {
           required: "Enter your e-mail",
           pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-            message: "Enter a valid e-mail address",
+            message:
+              // {t("Enter a valid e-mail address")},
+              "Enter a valid e-mail address",
           },
         })}
       />
       {errors.email && <p className="error">{errors.email.message}</p>}
-      <label>Theme Bereich *</label>
+      <label>{t("Topic")} *</label>
       <select name="topic" name="selectd" ref={register({ required: true })}>
-        <option value="">Auswählen</option>
-        <option value="allgemeine">Allgemeine</option>
-        <option value="softwarefehler">Softwarefehler</option>
-        <option value="rückruf">Rückruf</option>
+        <option value="">{t("Choose one")}</option>
+        <option value="general">{t("General")}</option>
+        <option value="softwareerros">{t("Software Errors")}</option>
+        <option value="recall">{t("Recall")}</option>
       </select>
       {errors.topic && errors.topic.type === "required" && (
-        <p>Befehle benötigen</p>
+        <p>{t("Required")}</p>
       )}
 
-      {showVersion === "softwarefehler" && (
+      {showVersion === "softwareerros" && (
         <>
           <label>Version *</label>
           <input
@@ -60,12 +63,11 @@ function Form(props) {
         </>
       )}
 
-      {showNumber === "rückruf" && (
+      {showNumber === "recall" && (
         <>
-          <label>Telefonnummer *</label>
+          <label>{t("Phone Number")}*</label>
           <input
             name="telefon"
-            placeholder="Telefonnummer"
             ref={register({
               required: "Enter your telefon",
             })}
@@ -74,14 +76,16 @@ function Form(props) {
         </>
       )}
 
-      <label>Beschreibung *</label>
-      <textarea name="Description" ref={register({ required: true })} />
-      {errors.Description && errors.Description.type === "required" && (
-        <p>Befehle benötigen</p>
+      <label>{t("Description")} *</label>
+      <textarea name="description" ref={register({ required: true })} />
+      {errors.description && errors.description.type === "required" && (
+        <p>{t("Required")}</p>
       )}
       <input type="submit" ref={register({ required: true })} />
     </form>
   );
-}
+};
 
-export default Form;
+export default withTranslation()(Form);
+
+// {t("")}
