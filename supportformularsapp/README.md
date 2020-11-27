@@ -1,6 +1,6 @@
 # F11 - Testaufgabe
 
-Deploy : [https://de24world.github.io/F11-Testaufgabe/#/]
+Deploy : [https://de24world.github.io/F11-Testaufgabe/]
 
 ## Libarary
 
