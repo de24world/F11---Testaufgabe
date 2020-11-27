@@ -18,7 +18,6 @@ createStore({
 });
 
 const App = () => {
-  // react-i18next
   const { t } = useTranslation();
 
   return (
@@ -27,7 +26,7 @@ const App = () => {
       <LanguageSwitcher />
 
       <Router>
-        <Route path="/" component={Form} />
+        <Route exact path="/" component={Form} />
         <Route path="/result" component={Result} />
       </Router>
     </StateMachineProvider>

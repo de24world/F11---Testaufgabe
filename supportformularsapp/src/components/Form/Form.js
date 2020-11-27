@@ -8,22 +8,23 @@ import { useTranslation } from "react-i18next";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "../updateAction";
 
-// // Router
-// import { withRouter } from "react-router-dom";
+// Router
+import { useHistory } from "react-router-dom";
 
 const Form = (props) => {
   const { t } = useTranslation();
 
   const { action } = useStateMachine(updateAction);
-
   const { register, handleSubmit, watch, errors } = useForm({});
+  const { push } = useHistory();
+  const onSubmit = (data) => {
+    console.log(data);
+    action(data);
+    push("/result");
+  };
+
   const showVersion = watch("topic", props.topic);
   const showNumber = watch("topic", props.topic);
-  const onSubmit = (data) => {
-    // console.log(data);
-    action(data);
-    props.history.push("./result");
-  };
 
   return (
     <form className="Form" onSubmit={handleSubmit(onSubmit)}>
@@ -95,11 +96,7 @@ const Form = (props) => {
       {errors.description && errors.description.type === "required" && (
         <p>{t("Required")}</p>
       )}
-      <button
-        type="submit"
-        name="submitButton"
-        ref={register({ required: true })}
-      >
+      <button type="submit" name="submitButton">
         Button
       </button>
     </form>
