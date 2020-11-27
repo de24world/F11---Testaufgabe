@@ -1,20 +1,32 @@
 import "./Form.css";
+
 import { useForm } from "react-hook-form";
+
 import { withTranslation } from "react-i18next";
 import { useTranslation } from "react-i18next";
 
+import { useStateMachine } from "little-state-machine";
+import updateAction from "../updateAction";
+
+// // Router
+// import { withRouter } from "react-router-dom";
+
 const Form = (props) => {
   const { t } = useTranslation();
+
+  const { action } = useStateMachine(updateAction);
+
   const { register, handleSubmit, watch, errors } = useForm({});
-  const showVersion = watch("selectd", props.selected);
-  const showNumber = watch("selectd", props.selected);
+  const showVersion = watch("topic", props.topic);
+  const showNumber = watch("topic", props.topic);
   const onSubmit = (data) => {
     console.log(data);
+    action(data);
+    props.history.push("./result");
   };
 
   return (
     <form className="Form" onSubmit={handleSubmit(onSubmit)}>
-      <h1> {t("SupportForm")}</h1>
       <label>Name *</label>
       <input name="name" ref={register({ required: true })} />
       {errors.name && errors.name.type === "required" && <p>{t("Required")}</p>}
@@ -23,7 +35,7 @@ const Form = (props) => {
         type="email"
         name="email"
         ref={register({
-          required: "Enter your e-mail",
+          required: true,
           pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
             message:
@@ -32,9 +44,10 @@ const Form = (props) => {
           },
         })}
       />
-      {errors.email && <p className="error">{errors.email.message}</p>}
+      {errors.email && <p>{t("Required")}</p>}
+
       <label>{t("Topic")} *</label>
-      <select name="topic" name="selectd" ref={register({ required: true })}>
+      <select name="topic" ref={register({ required: true })}>
         <option value="">{t("Choose one")}</option>
         <option value="general">{t("General")}</option>
         <option value="softwareerros">{t("Software Errors")}</option>
@@ -51,7 +64,7 @@ const Form = (props) => {
             name="version"
             placeholder="Version : X.X.X"
             ref={register({
-              required: "Enter your Version",
+              required: true,
               pattern: {
                 value: /^[0-9]*\.[0-9]*\.[0-9]{1,2}$/,
                 message:
@@ -59,7 +72,7 @@ const Form = (props) => {
               },
             })}
           />
-          {errors.version && <p className="error">{errors.version.message}</p>}
+          {errors.version && <p>{t("Required")}</p>}
         </>
       )}
 
@@ -69,10 +82,10 @@ const Form = (props) => {
           <input
             name="telefon"
             ref={register({
-              required: "Enter your telefon",
+              required: true,
             })}
           />
-          {errors.telefon && <p className="error">{errors.telefon.message}</p>}
+          {errors.telefon && <p>{t("Required")}</p>}
         </>
       )}
 
@@ -87,5 +100,3 @@ const Form = (props) => {
 };
 
 export default withTranslation()(Form);
-
-// {t("")}
