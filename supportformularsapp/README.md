@@ -1,68 +1,46 @@
-# Aufgaben
+# F11 - Testaufgabe
+
+Deploy : [https://de24world.github.io/F11---Testaufgabe/]
 
 ## Libarary
 
-In the project directory, you can run:
+1. react-hooks-form
+   https://react-hook-form.com/
 
-### `yarn start`
+2. react-i18-next
+   https://react.i18next.com/
 
-Runs the app in the development mode.\
+3. react-router-dom
+4. little-state-machine (state-management like a redux)
+
+5. gh-pages : For deploy
+
+### `npm install` & `npm run start`
+
+download code and 'npm install' and then 'npm run start'
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Aufgaben
 
-### `yarn test`
+Die Aufgabe besteht in dem Aufbau eines „Supportformulars“ in Deutsch und Englisch mit React.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Auf der Seite soll es oben eine Sprachauswahl geben, um von Deutsch auf Englisch wechseln zu können.
 
-### `yarn build`
+Das Formular enthält initial folgende Felder:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Name/Name (Textfeld, initial leer)
+Emailadresse/Email address (Textfeld, initial leer, Validierung ob es sich bei der Eingabe um eine gültige Mailadresse handelt)
+Themenbereich/Topic (Selectfeld mit den Optionen „Allgemeine Anfrage“, „Softwarefehler“ und „Rückruf“)
+Beschreibung/Description (Textarea)
+Absenden-Button
+Wird im Themenbereich „Softwarefehler“ ausgewählt, wird ein zusätzliches Feld unter dem Dropdown hinzugefügt, in das eine Versionsnummer eingetragen werden muss. Die Versionsnummer kann zum Beispiel lauten „1.0.0“, „1.11.12“. Eine andere Möglichkeit mit zum Beispiel Buchstaben ist hier nicht möglich. Das Schema bleibt <zahl>.<zahl>.<zahl>.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Wird im Themenbereich „Rückruf“ ausgewählt, wird ein zusätzliches Feld unter dem Dropdown hinzugefügt, in das eine Telefonnummer eingetragen werden muss.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Das Formular sollte die Eingabe entsprechend validieren.
 
-### `yarn eject`
+Wird das Formular abgeschickt, soll das Ergebnis auf einer Ergebnisseite angezeigt werden.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Die Ergebnisse werden nicht gespeichert.
+Alle Felder sind Pflichtfelder.
