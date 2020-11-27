@@ -8,19 +8,15 @@ import { useTranslation } from "react-i18next";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "../updateAction";
 
-// Router
-import { useHistory } from "react-router-dom";
-
 const Form = (props) => {
   const { t } = useTranslation();
 
   const { action } = useStateMachine(updateAction);
   const { register, handleSubmit, watch, errors } = useForm({});
-  const { push } = useHistory();
   const onSubmit = (data) => {
     console.log(data);
     action(data);
-    push("/result");
+    props.history.push("/result");
   };
 
   const showVersion = watch("topic", props.topic);
@@ -66,7 +62,7 @@ const Form = (props) => {
           <label>Version *</label>
           <input
             name="version"
-            placeholder="Version : X.X.X / 1.0.0 / 1.11.12"
+            placeholder="Version : X.X.X (1.0.0 / 1.11.12)"
             ref={register({
               required: true,
               pattern: {

@@ -1,11 +1,12 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import "./LanguageSwitcher.css";
 
 const LanguageSwitcher = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <>
+    <div className="LanguageSwitcher">
       <select
         value={i18n.language}
         onChange={(e) => i18n.changeLanguage(e.target.value)}
@@ -13,7 +14,7 @@ const LanguageSwitcher = () => {
         <option value="en">{t("English")}</option>
         <option value="de">{t("German")}</option>
       </select>
-    </>
+    </div>
   );
 };
 
