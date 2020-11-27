@@ -20,7 +20,7 @@ const Form = (props) => {
   const showVersion = watch("topic", props.topic);
   const showNumber = watch("topic", props.topic);
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     action(data);
     props.history.push("./result");
   };
@@ -30,21 +30,24 @@ const Form = (props) => {
       <label>Name *</label>
       <input name="name" ref={register({ required: true })} />
       {errors.name && errors.name.type === "required" && <p>{t("Required")}</p>}
+
       <label>{t("E-mail address")} *</label>
       <input
         type="email"
         name="email"
+        placeholder="xxx@xx.xx"
         ref={register({
           required: true,
           pattern: {
             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-            message:
-              // {t("Enter a valid e-mail address")},
-              "Enter a valid e-mail address",
           },
         })}
       />
-      {errors.email && <p>{t("Required")}</p>}
+      {errors.email && (
+        <p>
+          {t("Invalid")} {t("E-mail address")}
+        </p>
+      )}
 
       <label>{t("Topic")} *</label>
       <select name="topic" ref={register({ required: true })}>
@@ -62,17 +65,15 @@ const Form = (props) => {
           <label>Version *</label>
           <input
             name="version"
-            placeholder="Version : X.X.X"
+            placeholder="Version : X.X.X / 1.0.0 / 1.11.12"
             ref={register({
               required: true,
               pattern: {
                 value: /^[0-9]*\.[0-9]*\.[0-9]{1,2}$/,
-                message:
-                  "Nur x.x.x!!! //  x = Nummer // z.B. 1.0.0 oder 1.11.12",
               },
             })}
           />
-          {errors.version && <p>{t("Required")}</p>}
+          {errors.version && <p>{t("Invalid")} Version</p>}
         </>
       )}
 
@@ -94,7 +95,13 @@ const Form = (props) => {
       {errors.description && errors.description.type === "required" && (
         <p>{t("Required")}</p>
       )}
-      <input type="submit" ref={register({ required: true })} />
+      <button
+        type="submit"
+        name="submitButton"
+        ref={register({ required: true })}
+      >
+        Button
+      </button>
     </form>
   );
 };
