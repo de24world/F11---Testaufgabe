@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/F11-Testaufgabe/static/css/main.6733d989.chunk.css",
-    "main.js": "/F11-Testaufgabe/static/js/main.5fc8f3df.chunk.js",
-    "main.js.map": "/F11-Testaufgabe/static/js/main.5fc8f3df.chunk.js.map",
+    "main.css": "/F11-Testaufgabe/static/css/main.ea042a40.chunk.css",
+    "main.js": "/F11-Testaufgabe/static/js/main.0efecd99.chunk.js",
+    "main.js.map": "/F11-Testaufgabe/static/js/main.0efecd99.chunk.js.map",
     "runtime-main.js": "/F11-Testaufgabe/static/js/runtime-main.32128b43.js",
     "runtime-main.js.map": "/F11-Testaufgabe/static/js/runtime-main.32128b43.js.map",
     "static/js/2.5af63b56.chunk.js": "/F11-Testaufgabe/static/js/2.5af63b56.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.e8faa522.chunk.js": "/F11-Testaufgabe/static/js/3.e8faa522.chunk.js",
     "static/js/3.e8faa522.chunk.js.map": "/F11-Testaufgabe/static/js/3.e8faa522.chunk.js.map",
     "index.html": "/F11-Testaufgabe/index.html",
-    "static/css/main.6733d989.chunk.css.map": "/F11-Testaufgabe/static/css/main.6733d989.chunk.css.map",
+    "static/css/main.ea042a40.chunk.css.map": "/F11-Testaufgabe/static/css/main.ea042a40.chunk.css.map",
     "static/js/2.5af63b56.chunk.js.LICENSE.txt": "/F11-Testaufgabe/static/js/2.5af63b56.chunk.js.LICENSE.txt",
     "static/media/getFetch.cjs": "/F11-Testaufgabe/static/media/getFetch.d7d6010d.cjs"
   },
   "entrypoints": [
     "static/js/runtime-main.32128b43.js",
     "static/js/2.5af63b56.chunk.js",
-    "static/css/main.6733d989.chunk.css",
-    "static/js/main.5fc8f3df.chunk.js"
+    "static/css/main.ea042a40.chunk.css",
+    "static/js/main.0efecd99.chunk.js"
   ]
 }
