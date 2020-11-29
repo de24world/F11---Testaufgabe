@@ -11,7 +11,7 @@ import LanguageSwitcher from "./components/LanguageSwitcher/LanguageSwitcher";
 import Form from "./components/Form/Form";
 import Result from "./components/Result/Result";
 
-import "./App.css";
+import "./App.scss";
 
 createStore({
   data: {},
